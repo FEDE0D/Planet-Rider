@@ -1,0 +1,18 @@
+
+[NOMBRE]=[C|V][V][C][END]
+[END]=[V]"laí"|[V|"e"]"rí"
+[C]="v"|"c"|"d"|"g"|"r"|"t"|"l"
+[V]="a"|"e"|"hu"|"y"
+
+. Los espacios no tienen en cuenta, a menos que estén dentro de "".
+. 
+
+1.	Identificar y guardar reglas -> definicion
+2.	Al evaluar una regla:
+	. primero separar por | (pipes) para obtener operaciones
+	. elegir al azar una de las operaciones
+	. evaluar cada elemento de la operacion (reglas o valores atómicos) y sumar a la salida:
+		. si es atómica
+			. retornar valor
+		. sino
+			. evaluar elemento recursivamente como regla.

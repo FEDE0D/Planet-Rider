@@ -1,0 +1,6 @@
+<NOMBRE> = <OPCION> <V> <C> <END>
+<OPCION> = <C> | <V>
+<END> = <V> "laí" | <OTRO> "rí"
+<OTRO> = <V> | "e"
+<C> = "v" | "c" | "d" | "g"|"r"|"t"|"l"
+<V> = "a" |"e"|"hu"|"y"

@@ -1,0 +1,64 @@
+<NOMBRE> = ( <C> | <V> ) <V> <C> <END>
+<END>=<V> "laí"| (<V>|"e")"rí"
+<C> = "v" | "c" | "d" | "g"|"r"|"t"|"l"
+<V>= "a" |"e"|"hu"|"y"
+
+
+Para encontrar la regla:
+	Nombre: /^<[^<>]*>(?=\s*\=+)/gm
+	Cuerpo: split by =
+
+Primero usar split para encontrar las opciones dentro de una regla:
+
+	/\|(?=(([^']*'){2})*[^']*$)(?=(([^\"]*\"){2})*[^\"]*$)(?![^()]*\))/gm
+
+Luego se utiliza la regexp para encontrar las operaciones
+	/<[^<>]*>|\([^\(\)]*\)|\"[^\"]*\"/g para detectar las operaciones
+Estas operaciones pueden ser:
+	1. Atomos. Ej: "hu"
+	2. Reglas. Ej: <END>
+	3. Suboperaciones. Ej: ( <C> | <V> ). Sacar los parentesis y volver a correr la regexp para obtener las operaciones
+
+
+
+CARAJO!
+
+Godot usa la libreria NRex, que no soporta lookahead
+Hacer sintaxis mas restrictiva. No hay parentesis.
+
+<NOMBRE> = <OPCION> <V> <C> <END>
+<OPCION> = <C> | <V>
+<END> = <V> "laí" | <OTRO> "rí"
+<OTRO> = <V> | "e"
+<C> = "v" | "c" | "d" | "g"|"r"|"t"|"l"
+<V> = "a" |"e"|"hu"|"y"
+
+Para encontrar nombre->cuerpo: split("=")
+Para encontrar alternativas: split("|")
+Para encontrar operaciones: <[^<>]*>|\"[^\"]*\"
+
+* Usando XML *
+
+<scheme>
+	<rule name="NOMBRE">
+		<op rule="C"/>
+		<op rule="V"/>
+	</rule>
+	<rule name="C">
+		<op value="v"/>
+		<op value="d"/>
+	</rule>
+</scheme>
+
+* Usando GDSCRIPT *
+
+RULES = {
+	"nombre" : [
+		["<OPCION>", "<V>", "<C>", "<END>"]
+	]
+	"opcion": [
+		["<C>"], 
+		["<V>"]
+	]
+}
+

@@ -1,0 +1,25 @@
+Procedural level gen:
+Blocks: 1024x256
+Block-types:
+	start height & end height
+	* ascending: 0 -> 128
+	* constant: 0 -> 0
+	* descendent: 0 -> -128
+Mega-blocks:
+	Contains 1 or more blocks (recursive).
+	* MB_HILL: ascending(N) - constant(1+) -  descending(M)
+	* MB_LAKE: descending(N) - lake (2+) - ascending (1+)
+	* MB_PLANE: ascending(0+) - constant(1+) - descending(0+)
+
+Level generation:
+	Place blocks conforming with the level structure.
+	Every megablock has a min block count.
+	With every block generation return the new level height (+128, 0, -128).
+	The new height is used to place the next block.
+
+Level structure: Start - Mid - Finish
+	Start = B_FIST , [MB_PLANE (1)]
+	Mid = [MB_MID (20)]
+	Finish = [MB_HILL(4)], B_LAST
+	MB_MID = [MB_HILL | MB_LAKE | MB_PLANE | MB_OTRO]
+	MB_OTRO = MB_LAKE + MB_LAKE + MB_HILL
