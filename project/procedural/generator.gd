@@ -18,7 +18,9 @@ func _ready():
 	process_file(file_content)
 	#print_rules()
 	
-	print(evaluate("LEVEL"))
+	var blocks = evaluate(rule)
+	print(blocks)
+	level_constructor(blocks)
 	
 func print_rules():
 	for r in RULES:
@@ -59,3 +61,13 @@ func eval_element(elem):
 		return eval_rule(RULES[elem])
 	elif elem.match("\"*\""):
 		return [elem.substr(1, elem.length()-2)]
+
+func level_constructor(blocks):
+	var BLOCK_WIDTH = 1024
+	var insert_pos = Vector2(0, 512)
+	for b in blocks:
+		var block = load("res://scenes/blocks/"+b+".scn").instance()
+		get_node("../blocks").add_child(block)
+		block.set_global_pos(insert_pos)
+		insert_pos.x += BLOCK_WIDTH
+		insert_pos.y -= block.height

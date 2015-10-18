@@ -1,0 +1,22 @@
+# Regla principal
+<LEVEL> = <B_START> <LEVEL_MIDDLE> <B_END>
+
+# Bloques atomicos
+<B_START> = "block_first"
+<B_END> = "block_last"
+<B_DOWN> = "block_downhill"
+<B_UP> = "block_uphill"
+<B_LAKE> = "block_lake"
+<B_DOWN_LAKE> = "block_downhill_lake"
+<B_UP_LAKE> = "block_uphill_lake"
+<B_PLANE> = "block_plane"
+
+<LEVEL_MIDDLE> = <UP_DOWN> <PLANE> <UP_DOWN> <PLANE> <LAKE_AREA> <UP_DOWN> | <UP_DOWN> <PLANE> <UP_DOWN> <PLANE> <LAKE_AREA> <UP_DOWN> <LEVEL_MIDDLE>
+
+<UP_DOWN> = <UP> | <DOWN>
+<UP> = <UP> <B_UP> | <B_UP>
+<DOWN> = <DOWN> <B_DOWN> | <B_DOWN>
+<PLANE> = <PLANE> <B_PLANE> | <B_PLANE>
+<LAKE_AREA> = <B_DOWN_LAKE> <LAKE> <B_UP_LAKE>
+<LAKE> = <LAKE> <B_LAKE> | <B_LAKE>
+
