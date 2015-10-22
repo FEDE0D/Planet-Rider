@@ -8,6 +8,7 @@ const FORCE_JUMP = 1024.0
 const STOP_RATIO = 0.2
 const POWER_UP_SECS = 4.0
 const GAS_USAGE_SEC = 1/30.0
+const SPEED_MAX_X = 2048.0
 
 var ended = false
 var win = false
@@ -24,6 +25,8 @@ func _ready():
 	get_node("RayCast2D").add_exception(get_node("hover"))
 
 func _input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		get_tree().reload_current_scene()
 	if event.is_action_pressed("jump") and not event.is_echo():
 		if get_node("RayCast2D").is_colliding():
 			jump()
@@ -41,6 +44,8 @@ func _fixed_process(delta):
 		do_move(delta)
 	else:
 		stop(delta)
+	
+	do_cap_velocity()
 
 func do_move(delta):
 	if get_node("RayCast2D").is_colliding():
@@ -82,6 +87,11 @@ func do_powerup(delta):
 		if powerup <= 0:
 			FORCE_SPEED_MULTIPLIER = 1
 
+func do_cap_velocity():
+	var vel = get_linear_velocity()
+	vel.x = clamp(vel.x, -SPEED_MAX_X, SPEED_MAX_X)
+	set_linear_velocity(vel)
+
 func jump():
 	var vel = get_linear_velocity()
 	set_linear_velocity(Vector2(vel.x, -FORCE_JUMP))
@@ -95,7 +105,7 @@ func slow_down():
 	get_node("hover1").set_linear_velocity(vel)
 
 func stop(delta):
-	var vel = get_linear_velocity() * 0.97
+	var vel = get_linear_velocity() * 0.95
 	set_linear_velocity(vel)
 	get_node("hover").set_linear_velocity(vel)
 	get_node("hover1").set_linear_velocity(vel)
