@@ -1,5 +1,5 @@
 
-extends StaticBody2D
+extends Node2D
 
 export(int) var height = 0
 

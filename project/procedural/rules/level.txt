@@ -11,7 +11,7 @@
 <B_DOWN_LAKE> = "block_downhill_lake"
 <B_UP_LAKE> = "block_uphill_lake"
 <B_LAKE> = <B_LAKE_COMMON> | <B_LAKE_COMMON> | <B_LAKE_WATERFALL>
-<B_PLANE_COMMON> = "block_plane"
+<B_PLANE_COMMON> = "block_plane" | "block_plane" | "block_plane" | "block_bridge"
 <B_PLANE_CACTUS> = "block_plane_cactus" | "block_plane_cactus" | "block_plane_cactus_double"
 <B_PLANE> = <B_PLANE_COMMON> | <B_PLANE_COMMON> | <B_PLANE_CACTUS>
 <B_PLANE_BOX> = "block_plane_box" | "block_plane_box_gas"
