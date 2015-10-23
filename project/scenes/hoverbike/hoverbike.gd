@@ -1,9 +1,9 @@
 
 extends RigidBody2D
 
-var FORCE_SPEED = 2048.0
+var FORCE_SPEED = 4096#2048.0
 var FORCE_SPEED_MULTIPLIER = 1
-const FORCE_TURN = 128.0
+const FORCE_TURN = 256.0
 const FORCE_JUMP = 1024.0
 const STOP_RATIO = 0.2
 const POWER_UP_SECS = 4.0
@@ -86,16 +86,21 @@ func do_move(delta):
 
 func do_powerup(delta):
 	if powerup > 0:
-		FORCE_SPEED_MULTIPLIER = 3
+		FORCE_SPEED_MULTIPLIER = 2.0
 		
 		powerup -= delta
 		if powerup <= 0:
 			FORCE_SPEED_MULTIPLIER = 1
 
 func do_cap_velocity():
-	var vel = get_linear_velocity()
+	cap_vel(self)
+	cap_vel(get_node("hover"))
+	#cap_vel(get_node("hover1"))
+
+func cap_vel(node):
+	var vel = node.get_linear_velocity()
 	vel.x = clamp(vel.x, -SPEED_MAX_X, SPEED_MAX_X)
-	set_linear_velocity(vel)
+	node.set_linear_velocity(vel)
 
 func do_update_background_color():
 	Globals.get("GUI").set_background_color(get_global_pos())
@@ -122,7 +127,8 @@ func slow_down():
 		get_node("smokes/smoke").set_emitting(true)
 	elif engine_breaks == 2:
 		get_node("smokes/smoke1").set_emitting(true)
-		
+	if engine_breaks > 2:
+		do_end()
 
 func stop(delta):
 	var vel = get_linear_velocity() * 0.95

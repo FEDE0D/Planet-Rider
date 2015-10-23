@@ -7,6 +7,9 @@ const MASK_MINY = 112
 export(Color) var bg_from
 export(Color) var bg_to
 
+export(float) var max_height = -500
+export(float) var min_height = 500
+
 func _ready():
 	Globals.set("GUI", self)
 	set_gas_porcentage(1)
@@ -35,8 +38,8 @@ func set_level_porcentage(porc):
 	get_node("panel/level/Sprite").set_global_pos(from.linear_interpolate(to, porc) + Vector2(0, 16))
 
 func set_background_color(position):
-	var from = 500
-	var to = -500
+	var from = min_height
+	var to = max_height
 	var pos = clamp(position.y, to, from)
 	var p = (pos - from) / (to-from)
 	var color = bg_from.linear_interpolate(bg_to, p)

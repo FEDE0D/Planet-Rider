@@ -4,23 +4,32 @@
 # Bloques atomicos
 <B_START> = "block_first"
 <B_END> = "block_last"
-<B_DOWN> = "block_downhill"
-<B_UP> = "block_uphill"
-<B_LAKE> = "block_lake" | "block_lake_platform"
+<B_DOWN> = "block_downhill" | "block_downhill_2" <B_PLANE> | "block_downhill_3" | "block_downhill_3_box"
+<B_UP> = "block_uphill" | "block_uphill_2" | "block_uphill_3" | "block_uphill_4"
+<B_LAKE_COMMON> =  "block_lake" | "block_lake_platform"
+<B_LAKE_WATERFALL> = "block_lake_waterfall"
 <B_DOWN_LAKE> = "block_downhill_lake"
 <B_UP_LAKE> = "block_uphill_lake"
+<B_LAKE> = <B_LAKE_COMMON> | <B_LAKE_COMMON> | <B_LAKE_WATERFALL>
 <B_PLANE_COMMON> = "block_plane"
 <B_PLANE_CACTUS> = "block_plane_cactus" | "block_plane_cactus" | "block_plane_cactus_double"
 <B_PLANE> = <B_PLANE_COMMON> | <B_PLANE_COMMON> | <B_PLANE_CACTUS>
 <B_PLANE_BOX> = "block_plane_box" | "block_plane_box_gas"
+<B_TRAP> = "block_trap" | "block_trap_2"
 
-<LEVEL_MIDDLE> = <UP_DOWN> <PLANE> <UP_DOWN> <PLANE> <LAKE_AREA> <UP_DOWN> | <UP_DOWN> <PLANE> <UP_DOWN> <PLANE> <LAKE_AREA> <UP_DOWN> <LEVEL_MIDDLE>
+<LEVEL_1> = <UP_DOWN> <PLANE> <UP_DOWN> <PLANE> <LAKE_AREA> <UP_DOWN>
+<LEVEL_2> = <DOWN> <UP_DOWN> <PLANE> <DOWN> <UP_DOWN> <LAKE_AREA> <DOWN>
+<LEVEL_3> = <LAKE_AREA> <DOWN> <DOWN> <PLANE> <PLANE> 
+<LEVEL_TYPE> = <LEVEL_1> | <LEVEL_2> | <LEVEL_3>
+<LEVEL_MIDDLE> = <LEVEL_TYPE> | <LEVEL_TYPE> <LEVEL_MIDDLE>
 
 <UP_DOWN> = <UP> | <DOWN>
-<UP> = <UP> <B_UP> | <B_UP> | <RAMP>
+<UP> = <UP> <B_UP> | <B_UP> | <RAMP> | <UP> <UP>
 <DOWN> = <DOWN> <B_DOWN> | <B_DOWN>
-<PLANE> = <PLANE> <B_PLANE> | <PLANE> <B_PLANE_BOX> | <B_PLANE>
-<LAKE_AREA> = <B_DOWN_LAKE> <LAKE> <B_UP_LAKE>
+<PLANE> = <PLANE> <B_PLANE> | <PLANE> <B_PLANE_BOX> | <B_PLANE> | <TRAP>
 <LAKE> = <LAKE> <B_LAKE> | <B_LAKE>
+<LAKE_AREA> = <B_DOWN_LAKE> <LAKE> <B_UP_LAKE>
+<TRAP> = <B_PLANE_COMMON> <B_TRAP> <B_PLANE_COMMON>
+<TRAP_AREA> = <TRAP> <PLANE> <TRAP> | <TRAP> <TRAP> <TRAP>
 
 <RAMP> = <B_PLANE> "block_ramp" | <B_PLANE> "block_slope" | <B_PLANE_BOX> "block_ramp" <RAMP>
