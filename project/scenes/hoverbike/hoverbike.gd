@@ -8,7 +8,7 @@ const FORCE_JUMP = 1024.0
 const STOP_RATIO = 0.2
 const POWER_UP_SECS = 4.0
 const GAS_USAGE_SEC = 1/30.0
-const SPEED_MAX_X = 2048.0
+const SPEED_MAX_X = 1366.0
 
 var ended = false
 var win = false
@@ -79,10 +79,10 @@ func do_move(delta):
 		f.x = -1
 	elif Input.is_action_pressed("ui_right"):
 		f.x = 1
-	
-	var av = get_angular_velocity()
-	av += f.x * FORCE_TURN
-	set_angular_velocity(av * delta)
+	if f!=Vector2():
+		var av = get_angular_velocity()
+		av += f.x * FORCE_TURN
+		set_angular_velocity(av * delta)
 
 func do_powerup(delta):
 	if powerup > 0:
