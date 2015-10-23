@@ -12,10 +12,14 @@ const SPEED_MAX_X = 2048.0
 
 var ended = false
 var win = false
+var engine_breaks = 0
 
 var direction = 1
 var powerup = 0.0
-var gas_tank = 1.0
+var gas_tank = 1.0 setget set_gas_tank
+func set_gas_tank(g):
+	gas_tank = g
+	Globals.get("GUI").set_gas_porcentage(gas_tank)
 
 func _ready():
 	Globals.set("Player", self)
@@ -46,6 +50,8 @@ func _fixed_process(delta):
 		stop(delta)
 	
 	do_cap_velocity()
+	do_update_background_color()
+	do_update_level_porcentage()
 
 func do_move(delta):
 	if get_node("RayCast2D").is_colliding():
@@ -63,8 +69,7 @@ func do_move(delta):
 		
 		# update gas tank
 		if impulse != Vector2():
-			gas_tank = max(0, gas_tank - (GAS_USAGE_SEC * delta))
-			Globals.get("GUI").set_gas_porcentage(gas_tank)
+			self.gas_tank = max(0, gas_tank - (GAS_USAGE_SEC * delta))
 			if gas_tank == 0:
 				do_end()
 		
@@ -92,6 +97,14 @@ func do_cap_velocity():
 	vel.x = clamp(vel.x, -SPEED_MAX_X, SPEED_MAX_X)
 	set_linear_velocity(vel)
 
+func do_update_background_color():
+	Globals.get("GUI").set_background_color(get_global_pos())
+
+func do_update_level_porcentage():
+	var pos = get_global_pos()
+	var porc = clamp(pos.x / Globals.get("Level").level_length, 0, 1)
+	Globals.get("GUI").set_level_porcentage(porc)
+
 func jump():
 	var vel = get_linear_velocity()
 	set_linear_velocity(Vector2(vel.x, -FORCE_JUMP))
@@ -103,6 +116,13 @@ func slow_down():
 	set_linear_velocity(vel)
 	get_node("hover").set_linear_velocity(vel)
 	get_node("hover1").set_linear_velocity(vel)
+	engine_breaks += 1
+	
+	if engine_breaks == 1:
+		get_node("smokes/smoke").set_emitting(true)
+	elif engine_breaks == 2:
+		get_node("smokes/smoke1").set_emitting(true)
+		
 
 func stop(delta):
 	var vel = get_linear_velocity() * 0.95
@@ -112,6 +132,9 @@ func stop(delta):
 
 func powerup():
 	powerup = POWER_UP_SECS
+
+func pickup_gas(gas):
+	self.gas_tank = min(gas_tank + 0.4, 1.0)
 
 func do_win():
 	win = true

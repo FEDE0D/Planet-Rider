@@ -19,8 +19,8 @@ func _ready():
 	#print_rules()
 	
 	var blocks = evaluate(rule)
-	print(blocks)
 	level_constructor(blocks)
+	#print(blocks)
 	
 func print_rules():
 	for r in RULES:
@@ -71,3 +71,4 @@ func level_constructor(blocks):
 		block.set_global_pos(insert_pos)
 		insert_pos.x += BLOCK_WIDTH
 		insert_pos.y -= block.height
+	get_node("..").level_length = (blocks.size()-1) * BLOCK_WIDTH
