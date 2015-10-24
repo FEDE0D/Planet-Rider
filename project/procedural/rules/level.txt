@@ -2,14 +2,14 @@
 <LEVEL> = <B_START> <LEVEL_MIDDLE> <B_END>
 
 # Bloques atomicos
-<B_START> = "block_first"
+<B_START> = "block_first" <LAKE_AREA>
 <B_END> = "block_last"
 <B_DOWN> = "block_downhill" | "block_downhill_2" <B_PLANE> | "block_downhill_3" | "block_downhill_3_box"
 <B_UP> = "block_uphill" | "block_uphill_2" | "block_uphill_3" | "block_uphill_4"
 <B_LAKE_COMMON> =  "block_lake" | "block_lake_platform"
-<B_LAKE_WATERFALL> = "block_lake_waterfall"
+<B_LAKE_WATERFALL> = "block_lake_waterfall" | "block_lake_waterfall_2"
 <B_DOWN_LAKE> = "block_downhill_lake"
-<B_UP_LAKE> = "block_uphill_lake" | "block_uphill_2"
+<B_UP_LAKE> = "block_uphill_lake" | <B_LAKE> "block_uphill_2"
 <B_LAKE> = <B_LAKE_COMMON> | <B_LAKE_COMMON> | <B_LAKE_WATERFALL>
 <B_PLANE_COMMON> = "block_plane" | "block_plane" | "block_plane" | "block_bridge"
 <B_PLANE_CACTUS> = "block_plane_cactus" | "block_plane_cactus" | "block_plane_cactus_double"
