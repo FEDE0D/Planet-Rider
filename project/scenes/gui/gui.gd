@@ -45,3 +45,6 @@ func set_background_color(position):
 	var color = bg_from.linear_interpolate(bg_to, p)
 	
 	get_node("background/Polygon2D").set_color(color)
+
+func show_game_over():
+	get_node("GameOverControl").show()

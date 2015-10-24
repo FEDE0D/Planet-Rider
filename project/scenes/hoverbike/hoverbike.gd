@@ -149,3 +149,4 @@ func do_win():
 func do_end():
 	ended = true
 	set_process_input(false)
+	Globals.get("GUI").show_game_over()
