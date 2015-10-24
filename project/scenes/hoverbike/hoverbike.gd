@@ -35,13 +35,13 @@ func _input(event):
 		if get_node("RayCast2D").is_colliding():
 			jump()
 	
-	if get_node("RayCast2D").is_colliding():
-		if event.is_action_pressed("ui_left") and not event.is_echo() and direction > 0:
-			direction = -1
-			get_node("AnimationPlayer").play("left")
-		elif event.is_action_pressed("ui_right") and not event.is_echo() and direction < 0:
-			direction = 1
-			get_node("AnimationPlayer").play("right")
+	
+	if event.is_action_pressed("ui_left") and not event.is_echo() and direction > 0:
+		direction = -1
+		get_node("AnimationPlayer").play("left")
+	elif event.is_action_pressed("ui_right") and not event.is_echo() and direction < 0:
+		direction = 1
+		get_node("AnimationPlayer").play("right")
 
 func _fixed_process(delta):
 	if not ended:
@@ -103,8 +103,8 @@ func do_powerup(delta):
 
 func do_cap_velocity():
 	cap_vel(self)
-	cap_vel(get_node("hover"))
-	#cap_vel(get_node("hover1"))
+	#cap_vel(get_node("hover"))
+	cap_vel(get_node("hover1"))
 
 func cap_vel(node):
 	var vel = node.get_linear_velocity()
