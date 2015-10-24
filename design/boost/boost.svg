@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   id="svg3455"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="boost.svg"
+   inkscape:export-filename="/home/pgears/Documentos/1GAM/Planet-Rider/design/boost/boost.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs3457" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="38.559979"
+     inkscape:cy="39.174502"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1365"
+     inkscape:window-height="715"
+     inkscape:window-x="1"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3460">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-924.36216)">
+    <g
+       transform="matrix(0.78238874,0,0,0.78238874,109.17342,243.77137)"
+       inkscape:transform-center-y="-17.67767"
+       inkscape:transform-center-x="74.751288"
+       id="g3436"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         style="opacity:1;fill:#ffd42a;fill-opacity:0.91133004;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="m 23.389483,966.78474 -21.1916933,-29.5732 5.0535748,15.31958 -34.9208485,-29.68761 7.010011,17.05168 -49.986551,-14.67341 23.970087,25.36128 -85.108673,-13.36901 64.959873,22.35543 -25.562785,5.19017 45.308042,9.59148 c 0,0 -25.006029,8.73987 -22.977998,9.32642 2.028033,0.58654 56.655718,-0.26946 56.655718,-0.26946 l -11.21712,6.58401 36.268247,-7.35915 c 9.517024,-4.09047 16.392114,-8.74305 11.740116,-15.84821 z"
+         id="path3438"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccccccccccscccc" />
+      <path
+         sodipodi:nodetypes="cccccccccccscccc"
+         inkscape:connector-curvature="0"
+         id="path3440"
+         d="m 21.369177,967.47587 -15.9560981,-22.89992 1.840759,10.25553 -25.4004889,-20.66708 4.920984,12.6682 -36.208363,-11.54088 11.976637,18.20986 -59.808721,-7.21856 50.709288,15.60574 -19.247274,4.01899 34.114292,7.42713 c 0,0 -18.828069,6.76769 -17.301081,7.22188 1.526989,0.45419 42.6584244,-0.20865 42.6584244,-0.20865 l -8.4458324,5.09831 27.307858,-5.69854 c 9.839051,-2.02831 11.414537,-6.54282 8.839616,-12.27201 z"
+         style="opacity:1;fill:#ffeeaa;fill-opacity:0.91133004;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <path
+       style="opacity:1;fill:none;fill-opacity:0.91133004;fill-rule:nonzero;stroke:#000000;stroke-width:1.56477749;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 127.21763,1000.0741 -16.58014,-23.13776 3.95386,11.98586 -27.321683,-23.22725 5.484554,13.34104 -39.108915,-11.48031 18.753926,19.84238 -71.61770775,-11.29804 55.85351375,18.32892 -20.000035,4.06073 35.448502,7.50423 c 0,0 -19.564436,6.838 -17.977727,7.2969 1.58671,0.4589 44.326796,-0.2108 44.326796,-0.2108 l -8.776149,5.1513 28.375865,-5.7578 c 11.02493,-3.1251 11.33657,-7.6064 9.18534,-12.3994 z"
+       id="path4206"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccscccc"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+  </g>
+</svg>

@@ -101,6 +101,7 @@ func do_powerup(delta):
 			Globals.get("GUI").show_speed_up(false)
 	else:
 		get_node("graphics/boost/Particles2D").set_emitting(false)
+	Globals.get("GUI").set_boost_porcentage(powerup / POWER_UP_SECS)
 
 func do_cap_velocity():
 	cap_vel(self)
@@ -111,7 +112,6 @@ func cap_vel(node):
 	var vel = node.get_linear_velocity()
 	vel.x = clamp(vel.x, -SPEED_MAX_X, SPEED_MAX_X)
 	node.set_linear_velocity(vel)
-	
 
 func do_update_background_color():
 	Globals.get("GUI").set_background_color(get_global_pos())
@@ -153,6 +153,14 @@ func powerup():
 
 func pickup_gas(gas):
 	self.gas_tank = min(gas_tank + 0.4, 1.0)
+
+func pickup_health():
+	Globals.get("GUI").show_health()
+
+func use_health():
+	engine_breaks = 0
+	get_node("smokes/smoke").set_emitting(false)
+	get_node("smokes/smoke1").set_emitting(false)
 
 func do_win():
 	win = true
