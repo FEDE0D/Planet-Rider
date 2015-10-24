@@ -1,7 +1,7 @@
 
 extends RigidBody2D
 
-var FORCE_SPEED = 3000.0#2048.0
+var FORCE_SPEED = 2500.0#2048.0
 var FORCE_SPEED_MULTIPLIER = 1
 const FORCE_TURN = 128.0
 const FORCE_JUMP = 1024.0
