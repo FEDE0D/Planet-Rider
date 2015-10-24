@@ -1,7 +1,7 @@
 
 extends RigidBody2D
 
-var FORCE_SPEED = 4096#2048.0
+var FORCE_SPEED = 3000.0#2048.0
 var FORCE_SPEED_MULTIPLIER = 1
 const FORCE_TURN = 128.0
 const FORCE_JUMP = 1024.0
@@ -44,13 +44,14 @@ func _input(event):
 		get_node("AnimationPlayer").play("right")
 
 func _fixed_process(delta):
+	
 	if not ended:
+		do_cap_velocity()
 		do_powerup(delta)
 		do_move(delta)
 	else:
 		stop(delta)
 	
-	do_cap_velocity()
 	do_update_background_color()
 	do_update_level_porcentage()
 
@@ -65,7 +66,7 @@ func do_move(delta):
 		if Input.is_action_pressed("speed_up") and powerup > 0:
 			speed_dir = direction
 		
-		var impulse = Vector2(speed_dir, 0) * dir * FORCE_SPEED * delta
+		var impulse = Vector2(speed_dir * FORCE_SPEED, 0) * dir * delta
 		if Input.is_action_pressed("speed_up") and powerup > 0:
 			impulse *= FORCE_SPEED_MULTIPLIER
 		apply_impulse(Vector2(), impulse)
@@ -103,13 +104,14 @@ func do_powerup(delta):
 
 func do_cap_velocity():
 	cap_vel(self)
-	#cap_vel(get_node("hover"))
+	cap_vel(get_node("hover"))
 	cap_vel(get_node("hover1"))
 
 func cap_vel(node):
 	var vel = node.get_linear_velocity()
 	vel.x = clamp(vel.x, -SPEED_MAX_X, SPEED_MAX_X)
 	node.set_linear_velocity(vel)
+	
 
 func do_update_background_color():
 	Globals.get("GUI").set_background_color(get_global_pos())

@@ -2,7 +2,7 @@
 <LEVEL> = <B_START> <LEVEL_MIDDLE> <B_END>
 
 # Bloques atomicos
-<B_START> = "block_first"
+<B_START> = "block_first" "block_lake" "block_lake_waterfall" "block_uphill_2" "block_uphill_3"
 <B_END> = "block_last"
 <B_DOWN> = "block_downhill" | "block_downhill_2" <B_PLANE> | "block_downhill_3" | "block_downhill_3_box"
 <B_UP> = "block_uphill" | "block_uphill_2" | "block_uphill_3" | "block_uphill_4"
