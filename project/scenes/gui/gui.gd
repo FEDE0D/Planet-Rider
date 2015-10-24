@@ -46,5 +46,11 @@ func set_background_color(position):
 	
 	get_node("background/Polygon2D").set_color(color)
 
+func show_speed_up(show):
+	if show:
+		get_node("btn_speed").show()
+	else:
+		get_node("btn_speed").hide()
+
 func show_game_over():
 	get_node("GameOverControl").show()

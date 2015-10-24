@@ -3,7 +3,7 @@ extends RigidBody2D
 
 var FORCE_SPEED = 4096#2048.0
 var FORCE_SPEED_MULTIPLIER = 1
-const FORCE_TURN = 256.0
+const FORCE_TURN = 128.0
 const FORCE_JUMP = 1024.0
 const STOP_RATIO = 0.2
 const POWER_UP_SECS = 4.0
@@ -35,12 +35,13 @@ func _input(event):
 		if get_node("RayCast2D").is_colliding():
 			jump()
 	
-	if event.is_action_pressed("ui_left") and not event.is_echo() and direction > 0:
-		direction = -1
-		get_node("AnimationPlayer").play("left")
-	elif event.is_action_pressed("ui_right") and not event.is_echo() and direction < 0:
-		direction = 1
-		get_node("AnimationPlayer").play("right")
+	if get_node("RayCast2D").is_colliding():
+		if event.is_action_pressed("ui_left") and not event.is_echo() and direction > 0:
+			direction = -1
+			get_node("AnimationPlayer").play("left")
+		elif event.is_action_pressed("ui_right") and not event.is_echo() and direction < 0:
+			direction = 1
+			get_node("AnimationPlayer").play("right")
 
 func _fixed_process(delta):
 	if not ended:
@@ -57,12 +58,16 @@ func do_move(delta):
 	if get_node("RayCast2D").is_colliding():
 		var dir = Vector2(1, 0).rotated(get_rot())
 		var speed_dir = 0
-		if Input.is_action_pressed("speed_up"):
-			speed_dir = 1
-		elif Input.is_action_pressed("speed_down"):
+		if Input.is_action_pressed("ui_left"):
 			speed_dir = -1
+		elif Input.is_action_pressed("ui_right"):
+			speed_dir = 1
+		if Input.is_action_pressed("speed_up") and powerup > 0:
+			speed_dir = direction
 		
-		var impulse = Vector2(direction*speed_dir, 0) * dir * FORCE_SPEED * FORCE_SPEED_MULTIPLIER * delta
+		var impulse = Vector2(speed_dir, 0) * dir * FORCE_SPEED * delta
+		if Input.is_action_pressed("speed_up") and powerup > 0:
+			impulse *= FORCE_SPEED_MULTIPLIER
 		apply_impulse(Vector2(), impulse)
 		get_node("hover").apply_impulse(Vector2(), impulse)
 		get_node("hover1").apply_impulse(Vector2(), impulse)
@@ -74,23 +79,27 @@ func do_move(delta):
 				do_end()
 		
 	# turn
-	var f = Vector2()
-	if Input.is_action_pressed("ui_left"):
-		f.x = -1
-	elif Input.is_action_pressed("ui_right"):
-		f.x = 1
-	if f!=Vector2():
-		var av = get_angular_velocity()
-		av += f.x * FORCE_TURN
-		set_angular_velocity(av * delta)
+	else:
+		var f = Vector2()
+		if Input.is_action_pressed("ui_left"):
+			f.x = -1
+		elif Input.is_action_pressed("ui_right"):
+			f.x = 1
+		if f!=Vector2():
+			var av = get_angular_velocity()
+			av += f.x * FORCE_TURN
+			set_angular_velocity(av * delta)
 
 func do_powerup(delta):
-	if powerup > 0:
+	if powerup > 0 and Input.is_action_pressed("speed_up"):
+		get_node("graphics/boost/Particles2D").set_emitting(true)
 		FORCE_SPEED_MULTIPLIER = 2.0
-		
 		powerup -= delta
 		if powerup <= 0:
 			FORCE_SPEED_MULTIPLIER = 1
+			Globals.get("GUI").show_speed_up(false)
+	else:
+		get_node("graphics/boost/Particles2D").set_emitting(false)
 
 func do_cap_velocity():
 	cap_vel(self)
@@ -138,6 +147,7 @@ func stop(delta):
 
 func powerup():
 	powerup = POWER_UP_SECS
+	Globals.get("GUI").show_speed_up(true)
 
 func pickup_gas(gas):
 	self.gas_tank = min(gas_tank + 0.4, 1.0)
