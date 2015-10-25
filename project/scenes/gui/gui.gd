@@ -3,8 +3,8 @@ extends CanvasLayer
 
 const MASK_MAXY = 56
 const MASK_MINY = 112
-const MASK_BOOST_MAXX = 64
-const MASK_BOOST_MINX = 192
+const MASK_BOOST_MAXX = -48
+const MASK_BOOST_MINX = 80
 
 export(Color) var bg_from
 export(Color) var bg_to
@@ -20,18 +20,19 @@ func _ready():
 	draw_level_length()
 
 func draw_level_length():
-	var f = get_node("panel/level/from").get_global_pos()
-	var t = get_node("panel/level/to").get_global_pos()
+	var f = get_node("panel/level/from").get_global_pos() - get_node("panel/level").get_pos()
+	var t = get_node("panel/level/to").get_global_pos() - get_node("panel/level").get_pos()
 	
 	var points = [Vector2(f.x, f.y - 2), Vector2(t.x, t.y - 2), Vector2(t.x, t.y + 2), Vector2(f.x, f.y + 2)]
 	get_node("panel/level/Polygon2D").set_polygon(Vector2Array(points))
 
 func set_gas_porcentage(gas):
 	gas = clamp(gas, 0, 1)
-	
 	var pos = get_node("gas_mask").get_pos()
 	pos.y = MASK_MAXY + ((MASK_MINY - MASK_MAXY) * (1 - gas))
 	get_node("gas_mask").set_pos(pos)
+	
+	Globals.get("GUI/Messages").show_gas_low(gas < 0.3)
 
 func set_boost_porcentage(boost):
 	boost = clamp(boost, 0, 1)
@@ -60,17 +61,17 @@ func set_background_color(position):
 	get_node("background/Polygon2D").set_color(color)
 
 func show_health():
-	get_node("btn_health").show()
+	get_node("Controls/Actions/btn_health").show()
 
 func show_speed_up(show):
 	if show:
-		get_node("btn_speed").show()
+		get_node("Controls/Directions/btn_speed").show()
 	else:
-		get_node("btn_speed").hide()
+		get_node("Controls/Directions/btn_speed").hide()
 
 func show_game_over():
 	get_node("GameOverControl").show()
 
 func _on_btn_health_pressed():
 	Globals.get("Player").use_health()
-	get_node("btn_health").hide()
+	get_node("Controls/Actions/btn_health").hide()
