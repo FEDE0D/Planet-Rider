@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="256"
+   viewBox="0 0 512.00001 256"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="title.svg"
+   inkscape:export-filename="/home/pgears/Documentos/1GAM/Planet-Rider/design/title.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="176.21415"
+     inkscape:cy="92.719899"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1365"
+     inkscape:window-height="715"
+     inkscape:window-x="1"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-796.36216)">
+    <g
+       id="g3356"
+       transform="translate(50.69875,-14.429393)">
+      <flowRoot
+         transform="translate(12.522578,834.74796)"
+         style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:60px;line-height:125%;font-family:'Arista 2.0 Alternate Light';-inkscape-font-specification:'Arista 2.0 Alternate Light,  Light';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3336"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3338"><rect
+             style="font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;font-size:60px;font-family:'Arista 2.0 Alternate Light';-inkscape-font-specification:'Arista 2.0 Alternate Light,  Light'"
+             y="5.4821687"
+             x="-14.142136"
+             height="278.80209"
+             width="598.01031"
+             id="rect3340" /></flowRegion><flowPara
+           id="flowPara3344">PLANET</flowPara></flowRoot>      <flowRoot
+         transform="translate(-1.8989844,757.97636)"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:180px;line-height:125%;font-family:'Arista 2.0 Alternate';-inkscape-font-specification:'Arista 2.0 Alternate Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="flowRoot3348"
+         xml:space="preserve"><flowRegion
+           id="flowRegion3350"><rect
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:180px;font-family:'Arista 2.0 Alternate';-inkscape-font-specification:'Arista 2.0 Alternate Bold'"
+             y="84.274071"
+             x="-4.0406103"
+             height="266.68027"
+             width="632.35553"
+             id="rect3352" /></flowRegion><flowPara
+           id="flowPara3354">RIDER</flowPara></flowRoot>    </g>
+  </g>
+</svg>
