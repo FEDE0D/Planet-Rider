@@ -6,7 +6,7 @@ func _ready():
 	pass
 
 func _on_btnPlay_pressed():
-	get_tree().change_scene("res://scenes/level/level.scn")
+	get_tree().change_scene("res://scenes/screens/howtoplay/howToPlay.scn")
 
 func _on_btnQuit_pressed():
 	get_tree().quit()
