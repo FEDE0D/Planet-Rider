@@ -2,27 +2,25 @@
 <LEVEL> = <B_START> <LEVEL_MIDDLE> <B_END>
 
 # Bloques atomicos
-<B_START> = "block_start"
-<B_END> = "block_end"
-<B_ASCENDANT> = "block_ascendant1" | "block_ascendant2"
-<B_DESCENDANT> = "block_descendant1" | "block_descendant2"
-<B_CONSTANT> = "block_constant1" | "block_constant2"
-<B_LAKE_DOWN> = "block_lake_down"
-<B_LAKE> = "block_lake"
-<B_LAKE_UP> = "block_lake_up"
+<B_START> = "block_first"
+<B_END> = "block_last"
+<B_DOWN> = "block_downhill" | "block_downhill_2" <B_PLANE> | "block_downhill_3" | "block_downhill_3_box"
+<B_UP> = "block_uphill" | "block_uphill_2" | "block_uphill_3" | "block_uphill_4"
+<B_LAKE_COMMON> =  "block_lake" | "block_lake_platform"
+<B_LAKE_WATERFALL> = "block_lake_waterfall" | "block_lake_waterfall_2"
+<B_DOWN_LAKE> = "block_downhill_lake"
+<B_UP_LAKE> = "block_uphill_lake" | <B_LAKE> "block_uphill_2"
+<B_LAKE> = <B_LAKE_COMMON> | <B_LAKE_COMMON> | <B_LAKE_WATERFALL>
+<B_PLANE_COMMON> = "block_plane" | "block_plane" | "block_plane" | "block_bridge"
+<B_PLANE_CACTUS> = "block_plane_cactus" | "block_plane_cactus" | "block_plane_cactus_double"
+<B_PLANE> = <B_PLANE_COMMON> | <B_PLANE_COMMON> | <B_PLANE_CACTUS>
+<B_PLANE_BOX> = "block_plane_box" | "block_plane_box_gas"
+<B_TRAP> = "block_trap" | "block_trap_2"
 
-# Reglas secundarias
-<LEVEL_MIDDLE> = <M_HEIGHT_CHANGE> <M_HEIGHT_CONSERVE> <M_HEIGHT_CHANGE>
+<LEVEL_MIDDLE> = <LEVEL_MIDDLE> <MAIN> | <MAIN>
 
-<M_HEIGHT_CHANGE> = <M_UP> | <M_DOWN>
-<M_HEIGHT_CONSERVE> = <B_CONSTANT> | <M_HEIGHT_CONSERVE_CONSTANT> | <M_LAKE>
-<M_HEIGHT_CONSERVE_CONSTANT> = <M_HEIGHT_CONSERVE> <B_CONSTANT>
-<M_LAKE> = <B_LAKE_DOWN> <B_LAKE> <B_LAKE_UP>
+<MAIN> = <MAIN> <MAIN> | <B_PLANE> <B_UP> <TRAP> <B_UP> <B_PLANE>
 
-<M_UP> = <M_UP_ASCENDANT> | <B_ASCENDANT> | <B_ASCENDANT_CONSTANT>
-<M_DOWN> = <M_DOWN_DESCENDANT> | <B_DESCENDANT> | <B_DESCENDANT_CONSTANT>
-
-<M_UP_ASCENDANT> = <M_UP> <B_ASCENDANT>
-<M_DOWN_DESCENDANT> = <M_DOWN> <B_DESCENDANT>
-<B_ASCENDANT_CONSTANT> = <B_ASCENDANT> <B_CONSTANT>
-<B_DESCENDANT_CONSTANT> = <B_DESCENDANT> <B_CONSTANT>
+<TRAP> = <BRIDGES>
+<PITS> = <B_PLANE> <B_TRAP> | <B_PLANE> <B_TRAP> <PITS>
+<BRIDGES> = "block_bridge" | "block_bridge" <BRIDGES>

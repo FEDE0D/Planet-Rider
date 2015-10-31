@@ -16,6 +16,10 @@ var engine_breaks = 0
 
 var direction = 1
 var powerup = 0.0
+var points = 0 setget set_points
+func set_points(p):
+	points = p
+
 var gas_tank = 1.0 setget set_gas_tank
 func set_gas_tank(g):
 	gas_tank = g
@@ -169,4 +173,14 @@ func do_win():
 func do_end():
 	ended = true
 	set_process_input(false)
-	Globals.get("GUI").show_game_over()
+	
+	var message = "Try again..."
+	if win:
+		message = "You've made it!"
+	else:
+		if (engine_breaks > 2):
+			message = "The engines are gone!"
+		elif (gas_tank <= 0):
+			message = "Out of gas..."
+	
+	Globals.get("GUI").show_game_over(message)

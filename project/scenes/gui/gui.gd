@@ -18,6 +18,7 @@ func _ready():
 	set_boost_porcentage(0)
 	
 	draw_level_length()
+	get_node("transitions/Polygon2D").show() # I hid the transition polygon so It won't show while editing
 
 func draw_level_length():
 	var f = get_node("panel/level/from").get_global_pos() - get_node("panel/level").get_pos()
@@ -69,9 +70,20 @@ func show_speed_up(show):
 	else:
 		get_node("Controls/Directions/btn_speed").hide()
 
-func show_game_over():
+func show_game_over(message = ""):
+	get_node("GameOverControl").setMessage(message)
 	get_node("GameOverControl").show()
 
 func _on_btn_health_pressed():
 	Globals.get("Player").use_health()
 	get_node("Controls/Actions/btn_health").hide()
+
+func fadeAndReload():
+	get_node("transitions/AnimationPlayer").play("fadeout")
+
+func _on_AnimationPlayer_finished():
+	if get_node("transitions/AnimationPlayer").get_current_animation() == "fadeout":
+		get_tree().reload_current_scene()
+
+func _on_quit_pressed():
+	get_tree().change_scene("res://scenes/screens/main/main_menu.scn")
