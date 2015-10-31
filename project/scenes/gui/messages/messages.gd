@@ -9,6 +9,7 @@ func _ready():
 func show_gas_low(show):
 	if show and not get_node("gas_low/AnimationPlayer").is_playing() and gas_low < 1:
 		get_node("gas_low/AnimationPlayer").play("show")
+		Globals.get("Sounds").soundPlay("alarm")
 		gas_low += 1
 	elif not show:
 		get_node("gas_low/AnimationPlayer").stop()

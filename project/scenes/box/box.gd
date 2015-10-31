@@ -22,6 +22,7 @@ func do_break():
 	set_layer_mask(0)
 	get_node("graphics/Sprite").set_texture(img_box_broken)
 	get_node("AnimationPlayer").play("show_points")
+	Globals.get("Sounds").soundPlayBox()
 	
 	if item_scn != null:
 		var pos = get_global_pos()

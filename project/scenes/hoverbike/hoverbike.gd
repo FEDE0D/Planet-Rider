@@ -67,7 +67,7 @@ func do_move(delta):
 			speed_dir = -1
 		elif Input.is_action_pressed("ui_right"):
 			speed_dir = 1
-		if Input.is_action_pressed("speed_up") and powerup > 0:
+		elif Input.is_action_pressed("speed_up") and powerup > 0:
 			speed_dir = direction
 		
 		var impulse = Vector2(speed_dir * FORCE_SPEED, 0) * dir * delta
@@ -80,9 +80,15 @@ func do_move(delta):
 		# update gas tank
 		if impulse != Vector2():
 			self.gas_tank = max(0, gas_tank - (GAS_USAGE_SEC * delta))
+			if Input.is_action_pressed("speed_up") and powerup > 0:
+				self.gas_tank = min(1.0, gas_tank + (GAS_USAGE_SEC * delta))
 			if gas_tank == 0:
 				do_end()
-		
+		# sound
+		if speed_dir != 0:
+			Globals.get("Sounds").soundPlayEngine()
+		else:
+			Globals.get("Sounds").soundStopEngine()
 	# turn
 	else:
 		var f = Vector2()
@@ -94,10 +100,14 @@ func do_move(delta):
 			var av = get_angular_velocity()
 			av += f.x * FORCE_TURN
 			set_angular_velocity(av * delta)
+		
+		# sound
+		Globals.get("Sounds").soundStopEngine()
 
 func do_powerup(delta):
 	if powerup > 0 and Input.is_action_pressed("speed_up"):
 		get_node("graphics/boost/Particles2D").set_emitting(true)
+		Globals.get("Sounds").soundPlayPowerup()
 		FORCE_SPEED_MULTIPLIER = 2.0
 		powerup -= delta
 		if powerup <= 0:
@@ -105,6 +115,7 @@ func do_powerup(delta):
 			Globals.get("GUI").show_speed_up(false)
 	else:
 		get_node("graphics/boost/Particles2D").set_emitting(false)
+		Globals.get("Sounds").soundStopPowerup()
 	Globals.get("GUI").set_boost_porcentage(powerup / POWER_UP_SECS)
 
 func do_cap_velocity():
@@ -138,6 +149,7 @@ func slow_down():
 	get_node("hover1").set_linear_velocity(vel)
 	engine_breaks += 1
 	
+	Globals.get("Sounds").soundPlay("cactus")
 	if engine_breaks == 1:
 		get_node("smokes/smoke").set_emitting(true)
 	elif engine_breaks == 2:
@@ -153,18 +165,22 @@ func stop(delta):
 
 func powerup():
 	powerup = POWER_UP_SECS
+	Globals.get("Sounds").soundPlay("item")
 	Globals.get("GUI").show_speed_up(true)
 
 func pickup_gas(gas):
 	self.gas_tank = min(gas_tank + 0.4, 1.0)
+	Globals.get("Sounds").soundPlay("item")
 
 func pickup_health():
 	Globals.get("GUI").show_health()
+	Globals.get("Sounds").soundPlay("item")
 
 func use_health():
 	engine_breaks = 0
 	get_node("smokes/smoke").set_emitting(false)
 	get_node("smokes/smoke1").set_emitting(false)
+	Globals.get("Sounds").soundPlay("health")
 
 func do_win():
 	win = true
@@ -177,10 +193,13 @@ func do_end():
 	var message = "Try again..."
 	if win:
 		message = "You've made it!"
+		Globals.get("Sounds").soundPlay("win")
 	else:
 		if (engine_breaks > 2):
 			message = "The engines are gone!"
+			Globals.get("Sounds").soundPlay("die_engine")
 		elif (gas_tank <= 0):
 			message = "Out of gas..."
+			Globals.get("Sounds").soundPlay("die_gas")
 	
 	Globals.get("GUI").show_game_over(message)

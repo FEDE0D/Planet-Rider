@@ -34,4 +34,4 @@
 <TRAP_AREA> = <TRAP> <PLANE> <TRAP> | <TRAP> <TRAP> <TRAP>
 
 <RAMP> = <B_PLANE> "block_ramp" | <B_PLANE> "block_slope" | <B_PLANE_BOX> "block_ramp" <RAMP>
-<DROP> = "block_downhill_2" "block_downhill_2"
+<DROP> = "block_downhill_2"
