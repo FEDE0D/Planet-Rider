@@ -11,3 +11,4 @@ This public repository contains the entire source project for the game.
 You can open this project with [Godot Engine](http://godotengine.org) version 2.0 alpha (03/10/2015) or greater.
 Note: The game was made using a nightly compiled version for Godot (http://www.godotengine.org/documents/118) so some compatibility issues may arise.
 
+More info [on my blog here](http://fede0d.github.io/blog/2015/10/18/planet-rider-video.html) and [here](http://fede0d.github.io/blog/2015/10/25/planet-rider-video-2.html). Download the game for Android [here](http://fede0d.github.io/game/2015/10/31/planet-rider.html)
